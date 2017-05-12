@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="SignUpPage" xmlns:controls="clr-namespace:ControlToques.Controls;assembly=ControlToques" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ControlToques.SignUpPage">
+	<ContentPage.Content>
+		<StackLayout VerticalOptions="Start" Padding="10,10,10,10" BindingContext="{Binding CurrentUser}">
+			<TableView>
+				<TableRoot>
+					<TableSection>
+						<ImageCell Text="Take a Photo" ImageSource="{Binding Photo}" Command="{Binding TakePhotoCommand}">
+						</ImageCell>
+					</TableSection>
+				</TableRoot>
+			</TableView>
+			<Entry Placeholder="Nombre" Text="{Binding Name}" PlaceholderColor="Gray">
+			</Entry>
+			<controls:BindablePicker Title="Genero" ItemsSource="{Binding BindingContext.Genders, Source={x:Reference SignUpPage}}" SelectedItem="{Binding Gender}" HorizontalOptions="FillAndExpand" />
+			<Entry Placeholder="Edad" Text="{Binding Age}" PlaceholderColor="Gray" Keyboard="Numeric">
+			</Entry>
+			<ActivityIndicator IsRunning="{Binding IsBusy}" IsEnabled="True" IsVisible="{Binding IsBusy}">
+			</ActivityIndicator>
+			<Button Text="Comenzar" HorizontalOptions="CenterAndExpand" Command="{Binding BindingContext.SignUpCommand, Source={x:Reference SignUpPage}}" >
+			</Button>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

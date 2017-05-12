@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="ControlPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ControlToques.ControlPage">
+	<ContentPage.Content>
+		<StackLayout>
+			<Button Text="Comenzar" Command="{Binding StartConnectionCommand}"/>
+			<Label Text="{Binding CurrentUser.Name}" />
+			<StackLayout BindingContext="{Binding CurrentUser}" Orientation="Horizontal">
+				<Entry WidthRequest="200" Text="{Binding Intensity}" />
+				<Button Text="+" Command="{Binding BindingContext.IncreaseIntensityCommand, Source={x:Reference ControlPage}}" />
+				<Button Text="-" Command="{Binding BindingContext.DecreaseIntensityCommand, Source={x:Reference ControlPage}}"/>
+			</StackLayout>
+			<Label Text="{Binding Duration}"  />
+			<Button Text="Terminar" Command="{Binding EndConnectionCommand}" />
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
